@@ -4,7 +4,7 @@
 
 ;; Author: Mr Maker <make-all@users.github.com>
 ;; Version: 0.1.0
-;; URL: https://github.com/make-all/conduit-el#readme
+;; URL: https://github.com/make-all/conduit-emacs#readme
 ;; Package-Requires:
 
 ;; Keywords: tools, comm
