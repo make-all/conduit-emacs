@@ -19,7 +19,7 @@ It takes one mandatory argument, which is the object type  to search for
 (string), and optional args for queryKey (string), constraints (alist),
 attachments (list) and cursor (alist).
 
-`conduit-edit' - this is a higher level function to call an edit endpoint.
+'conduit-edit' - this is a higher level function to call an edit endpoint.
 It takes two mandatory arguments, the object type to be edited or created,
 (string) and the transactions to be performed on the object (alist).
 A third optional argument is available to specify an object id (string
