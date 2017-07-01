@@ -1,11 +1,11 @@
-;;; conduit.el --- Interface to Phabricator via the Conduit API  -*- lexical-binding: t; -*-
+;;; conduit.el --- Use Phabricator via the Conduit API  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2017  Mr Maker
 
 ;; Author: Mr Maker <make-all@users.github.com>
 ;; Version: 0.1.0
-;; URL: https://github.com/make-all/conduit-emacs#readme
-;; Package-Requires:
+;; Url: https://github.com/make-all/conduit-emacs#readme
+;; Package-Requires: ((emacs "24.4"))
 
 ;; Keywords: tools, comm
 
@@ -28,7 +28,7 @@
 ;; server via the Conduit API.  It is intended to be used by elisp developers
 ;; to develop user facing interfaces to various Phabricator features.
 
-;; To call conduit methods, `conduit-phabricator-server' and
+;; To call conduit methods, `conduit-phabricator-url' and
 ;; `conduit-api-token' must first be configured.  If you work with
 ;; multiple phabricator servers, it is recommended to do this on a
 ;; per-project basis.
@@ -57,6 +57,7 @@
 
 (require 'json)
 (require 'subr-x)
+(require 'url-handlers)
 
 (defgroup phabricator nil
   "Options for configuring access to a Phabricator server." :group 'external)
@@ -81,8 +82,8 @@ calling other conduit methods that do not have specific higher-level
 functions available.
 
 Example Usage:
-(conduit-call \"user.whoami\")
-(conduit-call \"differential.createinline\"
+\(conduit-call \"user.whoami\")
+\(conduit-call \"differential.createinline\"
               '((\"revisionID\" . 1) (\"filePath\" . \"README.txt\")
 		(\"isNewFile\" . t) (\"lineNumber\" . 1)
 		(\"content\" . \"Test comment\")))"
@@ -137,8 +138,8 @@ in addition to the Conduit API documentation for the specific search
 method for more information.
 
 Example Usage:
-(conduit-search \"project\" \"active\")
-(conduit-search \"differential.revision\" nil
+\(conduit-search \"project\" \"active\")
+\(conduit-search \"differential.revision\" nil
 		'((\"projects\" . (\"MyProject\")))
 		'(\"reviewers\")
 		'((\"limit\" . 10)))"
@@ -173,9 +174,9 @@ in addition to the Conduit API documentation for the specific
 edit method for more information.
 
 Example Usage:
-(conduit-edit \"paste\" '((\"title\" . \"Example\")
+\(conduit-edit \"paste\" '((\"title\" . \"Example\")
                         (\"text\" . \"Hello World\")))
-(conduit-edit \"paste\" '((\"comment\" . \"Nice work!\")) 1)"
+\(conduit-edit \"paste\" '((\"comment\" . \"Nice work!\")) 1)"
   (let ((conduit-method (concat object-type ".edit"))
 	(args `(("transactions" . ,(mapcar (lambda (x)
 					     (list (cons "type" (car x))

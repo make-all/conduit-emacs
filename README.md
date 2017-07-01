@@ -4,7 +4,7 @@ This library provides elisp functions for interfacing to a Phabricator
 server via the Conduit API.  It is intended to be used by elisp developers
 to develop user facing interfaces to various Phabricator features in Emacs.
 
-To call conduit methods, `conduit-phabricator-server` and `conduit-api-token`
+To call conduit methods, `conduit-phabricator-url` and `conduit-api-token`
 must first be configured.  If you work with multiple phabricator servers,
 it is recommended to do this on a per-project basis.
 
