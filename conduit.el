@@ -76,7 +76,7 @@ your profile picture, for Bot users, Settings are under Manage User."
 
 (defun conduit-call (method &optional args)
   "Call a conduit METHOD with ARGS.
-ARGS are converted to JSON using json-encode, so should generally
+ARGS are converted to JSON using ‘json-encode’, so should generally
 be an alist.  This is the basic function for making conduit calls,
 used by other higher level functions.  It may be useful in
 calling other conduit methods that do not have specific higher-level
