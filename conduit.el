@@ -59,6 +59,7 @@
 (require 'subr-x)
 (require 'url-handlers)
 
+;;;###autoload
 (defgroup phabricator nil
   "Options for configuring access to a Phabricator server." :group 'external)
 
